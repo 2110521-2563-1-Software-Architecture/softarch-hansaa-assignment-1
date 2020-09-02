@@ -54,7 +54,7 @@ router.get("/:id", async (req, res) => {
  *    post:
  *      description: Create a book
  *      parameters:
- *        - name: book
+ *        - name: name
  *          in: body
  *          description: Name of our book
  *          required: true
