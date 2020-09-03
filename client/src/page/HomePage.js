@@ -1,10 +1,10 @@
 import React from "react"
-
+import BookList from "../component/booklist"
 class HomePage extends React.Component {
     render() {
         return (
             <div>
-                <p>Hello World</p>
+                <BookList></BookList>
             </div>
         )
     }
