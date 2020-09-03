@@ -1,12 +1,12 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Homepage from './page/HomePage';
+import React from "react";
+import AddBox from "./components/AddBox";
+import BookList from "./components/Booklist";
 
 function App() {
   return (
-    <div className="App">
-      <Homepage></Homepage>
+    <div className="container mb-large3">
+      <AddBox />
+      <BookList />
     </div>
   );
 }
