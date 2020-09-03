@@ -14,7 +14,7 @@ This contains the source code for REST api, client for the REST api, gRPC, and g
 3. /rest - This is the source code for the RESTful APIs
 
 ## Screenshots of Swagger 
-![Screenshots of Swagger]()
+![Screenshots of Swagger](https://github.com/2110521-2563-1-Software-Architecture/softarch-hansaa-assignment-1/blob/master/images/swagger1.png?raw=true)
 
 ## Comparision between calling the methods based on gRPC and REST API
 For RESTful Apis, the clients makes a request to the server by using HTTP protocol. The server then matches the uri given from the client to see which function will be exectuted. The function then returns a response for the client also using the HTTP protocol.
