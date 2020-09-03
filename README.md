@@ -8,3 +8,4 @@
 6031038721 Prawsang Chayakulkeeree  
 
 ## Screenshots of Swagger 
+![Screenshots of Swagger](https://github.com/2110521-2563-1-Software-Architecture/softarch-hansaa-assignment-1/blob/master/images/swagger.png?raw=true)
