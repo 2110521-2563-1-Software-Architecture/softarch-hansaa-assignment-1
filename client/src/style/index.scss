@@ -1,0 +1,81 @@
+/* Colors */
+$text: #232323;
+$primary: dodgerblue;
+$gray100: #fafafa;
+$gray300: #e6e6e6;
+$gray400: #cccccc;
+$gray500: #aaaaaa;
+$gray700: #898989;
+$danger: crimson;
+
+/* sizes */
+$small1: 2px;
+$normal: 4px;
+$large1: 8px;
+$large2: 16px;
+$large3: 32px;
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import "modifiers";
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: $gray100;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 19px rgba(0, 0, 0, 0.2);
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+.entry {
+  &:not(:last-child) {
+    border-bottom: 1px $gray300 solid;
+  }
+  transition: all 0.3s ease;
+  padding-left: $large2;
+  cursor: pointer;
+  &:hover {
+    background-color: $gray300;
+  }
+}
+
+/* Form */
+input {
+  background-color: transparent;
+  border: 1px $gray300 solid;
+  border-radius: 4px;
+  box-sizing: border-box;
+  padding: 10px 8px;
+  min-height: 30px;
+  width: 100%;
+}
+
+button {
+  border: none !important;
+  cursor: pointer;
+  background-color: $primary;
+  border-radius: 4px;
+  color: white;
+  padding: 12px 16px;
+  font-weight: bold;
+
+  &.danger {
+    background-color: $danger;
+  }
+  &:disabled {
+    background-color: $gray400;
+    cursor: not-allowed;
+  }
+}
