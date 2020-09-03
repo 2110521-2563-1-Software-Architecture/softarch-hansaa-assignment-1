@@ -1,35 +1,53 @@
 import React from "react"
 import Card from 'react-bootstrap/Card'
 import Button from 'react-bootstrap/Button'
-import axios from axios;
+import { Col, Row, Form } from "react-bootstrap";
+import axios from 'axios'
 
 class AddBox extends React.Component {
     state = {
         name: '',
         author: ''
       }
-    addBook = await axios.post('/books',{ name: 'testBookName', author:'testAuthor'});
 
-    handleSubmit = event => {   
-        axios.post('/books', { name: this.state.name, author:this.state.author })
-          .then(res => {
-            console.log(res);
-            console.log(res.data);
-          })
-      }
+    // async componentDidMount() {
+    //     const books = await axios.post('/books', { name: this.state.name, author:this.state.author })
+    //     if (books.data) {
+    //         this.setState({ books: books })
+    //     }
+    // }
+    // handleSubmit(){
+    //     const books = await axios.post('/books', { name: this.state.name, author:this.state.author })
+    // }
 
     render() {
         return (
-            <Card>
-                <Card.Body>
-                    <Card.Title>Add New Book = new type(arguments);</Card.Title>
-                    <Card.Text>
-                        <p>Name:</p>
-                        <p>Author:</p>
-                    </Card.Text>
-                    <Button variant="success">Add</Button>
-                </Card.Body>
-            </Card>
+            <Form>
+                <h2>Add New Book</h2>
+            <Form.Group as={Row} controlId="bookName">
+              <Form.Label column sm={2}>
+                Name
+              </Form.Label>
+              <Col sm={10}>
+                <Form.Control placeholder="Book Name" />
+              </Col>
+            </Form.Group>
+          
+            <Form.Group as={Row} controlId="Author">
+              <Form.Label column sm={2}>
+                Author
+              </Form.Label>
+              <Col sm={10}>
+                <Form.Control placeholder="Author" />
+              </Col>
+            </Form.Group>
+          
+            <Form.Group as={Row}>
+              <Col sm={{ span: 10, offset: 2 }}>
+                <Button type="submit">Add</Button>
+              </Col>
+            </Form.Group>
+          </Form>
         )
     }
 }
