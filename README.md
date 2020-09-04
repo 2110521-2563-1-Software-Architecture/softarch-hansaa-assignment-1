@@ -114,10 +114,10 @@ For RESTful Apis, the clients makes a request to the server by using HTTP protoc
 Based on the introduced interface, compare how to call the methods based on gRPC and REST API side-by-side, e.g. in a table format as shown below.
 | Functions     | gRPC          | Rest  |
 | ------------- |:-------------:| -----:|
-| List All Books|               |       |
-| Get One Book  |               |       |
-| Add a Book    |               |       |
-| Remove a Book |               |       |
+| List All Books|listBooks()|       |
+| Get One Book  |insertBook(id, title, author)|       |
+| Add a Book    |getBook(id)|       |
+| Remove a Book |deleteBook(id)|       |
 
 ## Draw a component diagram representing the book services with and without interfaces.
 
