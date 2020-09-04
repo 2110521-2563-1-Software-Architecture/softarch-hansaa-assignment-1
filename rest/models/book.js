@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const bookSchema = new mongoose.Schema({
   id: {
     type: Number,
+    unique: true,
     get: (v) => Math.round(v),
     set: (v) => Math.round(v),
   },
@@ -31,6 +32,7 @@ module.exports = mongoose.model("Book", bookSchema);
  *        properties:
  *          id:
  *            type: integer
+ *            unique: true
  *          title:
  *            type: string
  *          author:
