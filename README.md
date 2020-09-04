@@ -1,56 +1,87 @@
-# softarch-hansaa-assignment-1  
-  
-### รายชื่อสมาชิกในกลุ่ม  
+# softarch-hansaa-assignment-1
+
+### Members
+
 6031035821 Budsakorn Khosagrid  
 6030097521 Janejira Aroonnual  
 6030090021 Chirapa Peisiripatana  
 6031036421 Palmmanee Thapphachaya  
-6031038721 Prawsang Chayakulkeeree 
+6031038721 Prawsang Chayakulkeeree
 
-## Contents  
-This contains the source code for REST api, client for the REST api, gRPC, and gRPC's client for a book record service. The directories and described below:  
-1. /client - This is the client that calls the RESTful APIs
-2. /gRPC - Contains both the client and server using gRPC
-3. /rest - This is the source code for the RESTful APIs
+## Contents
 
-## Screenshots of Swagger 
+This contains the source code for REST api, client for the REST api, gRPC, and gRPC's client for a book record service. The directories and described below:
+
+1. /gRPC - Contains both the client and server with gRPC
+2. /rest - Contains both the client and server with RESTful APIs
+
+## Screenshots of Swagger
+
 ![Screenshots of Swagger](https://github.com/2110521-2563-1-Software-Architecture/softarch-hansaa-assignment-1/blob/master/images/swagger1.png?raw=true)
 
 ## Source codes of server that provides the same set of functions accessible and client that makes use of the service via these REST APIs.
 
-## Source Code 
+## Source Code
 
 #### Client
+
+##### List All Books
+
 ```
-async componentDidMount() {
-    const books = await axios.get("/books");
-    if (books.data) {
-      this.setState({ books: books.data });
-    }
-  }
-
-getBook = (id) => {
-  const book = axios.get("/books/${id}");
-  this.setState({selectedBook: book});
-}
-
-submit = (e) => {
-    const { bookName, author } = this.state;
-    axios
-      .post("/books", {
-        name: bookName,
-        author,
-      })
-      .then((res) => console.log(res))
-      .catch((err) => console.log(err));
+const listAllBooks = () => {
+  const listAllBooksAPI = async () => {
+    await axios.get(`${BASE_URL}/books`).then((res) => console.log(res.data));
   };
-
-deleteBook = (id) => {
-    Axios.delete(`/books/${id}`);
+  listAllBooksAPI();
 };
 ```
 
+##### Get a Book by ID
+
+```
+const getBookById = () => {
+  const getBookByIdAPI = async (id) => {
+    await axios
+      .get(`${BASE_URL}/books/${id}`)
+      .then((res) => console.log(res.data));
+  };
+  const id = args[1];
+  getBookByIdAPI(id);
+};
+```
+
+##### Insert a Book
+
+```
+const insertBookAPI = async (id, title, author) => {
+  await axios
+    .post(`${BASE_URL}/books`, {
+      id,
+      title,
+      author,
+    })
+    .then((res) => console.log(res.data));
+};
+const id = args[1];
+const title = args[2];
+const author = args[3];
+insertBookAPI(id, title, author);
+```
+
+##### Delete a Book
+
+```
+const deleteBookByIdAPI = async (id) => {
+  await axios
+    .delete(`${BASE_URL}/books/${id}`)
+    .then((res) => console.log(res.data));
+};
+const id = args[1];
+deleteBookByIdAPI(id);
+```
+
 #### Server
+
 ```
 const express = require("express");
 const router = express.Router();
@@ -97,29 +128,30 @@ module.exports = router;
 ```
 
 ## Comparision between calling the methods based on gRPC and REST API
-For RESTful Apis, the clients makes a request to the server by using HTTP protocol. The server then matches the uri given from the client to see which function will be exectuted. The function then returns a response for the client also using the HTTP protocol.
 
-| Functions     | gRPC          | Rest  |
-| ------------- |:-------------:| -----:|
-| List All Books| client.list({}, function(error, books)            |axios.get("/books")|
-| Get One Book  | client.get({ id: parseInt(id) }, function(error, book)          |axios.get("/books/${id}")|
-| Add a Book    | client.insert(book, function(error, empty)            |axios.post("/books", {name: bookName,author,})|
-| Remove a Book | client.delete({ id: parseInt(id) }, function(error, empty)              |axios.delete(`/books/${id}`)|
+For RESTful APIs, the clients makes a request to the server by using HTTP protocol. The server then matches the uri given from the client to see which function will be exectuted. The function then returns a response for the client also using the HTTP protocol.
+
+| Functions      | gRPC                                                         | Rest                                                       |
+| -------------- | :----------------------------------------------------------- | :--------------------------------------------------------- |
+| List All Books | `client.list({}, function(error, books)`                     | `` axios.get(`${BASE_URL}/books`) ``                       |
+| Get One Book   | `client.get({ id: parseInt(id) }, function(error, book)`     | `` axios.get(`${BASE_URL}/books/${id}`) ``                 |
+| Add a Book     | `client.insert(book, function(error, empty)`                 | `` axios.post(`${BASE_URL}/books`, {id, title, author}) `` |
+| Remove a Book  | `client.delete({ id: parseInt(id) }, function(error, empty)` | `` axios.delete(`${BASE_URL}/books/${id}`) ``              |
 
 ## What are the main differences between REST API and gRPC?
 
-  Overall, the efficiency of gRPC is higher than that of REST due to several differences in their feature implementations such as protocol (HTTP2 vs HTTP1.1), payload(Protobuf vs JSON), API contract (Strict vs Loose)etc. However, for specific cases in which browser support is mandatory or only small payloads are required to be sent through multiple, simultaneous client-server calls, REST outperforms gRPC.
+Overall, the efficiency of gRPC is higher than that of REST due to several differences in their feature implementations such as protocol (HTTP2 vs HTTP1.1), payload(Protobuf vs JSON), API contract (Strict vs Loose)etc. However, for specific cases in which browser support is mandatory or only small payloads are required to be sent through multiple, simultaneous client-server calls, REST outperforms gRPC.
 
 ## What is the benefits of introduce interface in front of the gRPC and REST API of the book services?
+
 Based on the introduced interface, compare how to call the methods based on gRPC and REST API side-by-side, e.g. in a table format as shown below.
-| Functions     | gRPC          | Rest  |
-| ------------- |:-------------:| -----:|
-| List All Books|listBooks()|       |
-| Get One Book  |insertBook(id, title, author)|       |
-| Add a Book    |getBook(id)|       |
-| Remove a Book |deleteBook(id)|       |
+| Functions | gRPC | Rest |
+| ------------- |:-------------| :-----|
+| List All Books|`node client.js list`|`node -e 'require("./client").listAllBooks()'`|
+| Get One Book |`node client.js get [id]`|`node -e 'require("./client").getBookById()' [id]`|
+| Add a Book |`node client.js insert [id] [title] [author]`|`node -e 'require("./client").insertBook()' [id] [title] [author]`|
+| Remove a Book |`node client.js delete [id]` |`node -e 'require("./client").deleteBookById()' [id]`|
 
 ## Draw a component diagram representing the book services with and without interfaces.
 
-
-![component diagram of RestApi with interface](https://github.com/2110521-2563-1-Software-Architecture/softarch-hansaa-assignment-1/blob/master/images/Component%20(4).png)
+![component diagram of RestApi with interface](<https://github.com/2110521-2563-1-Software-Architecture/softarch-hansaa-assignment-1/blob/master/images/Component%20(4).png>)
