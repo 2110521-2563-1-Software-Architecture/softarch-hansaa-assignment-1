@@ -21,6 +21,7 @@ This contains the source code for REST api, client for the REST api, gRPC, and g
 ## Source Code 
 
 #### Client
+```
 async componentDidMount() {
     const books = await axios.get("/books");
     if (books.data) {
@@ -47,9 +48,10 @@ submit = (e) => {
 deleteBook = (id) => {
     Axios.delete(`/books/${id}`);
 };
-
+```
 
 #### Server
+```
 const express = require("express");
 const router = express.Router();
 const { body } = require("express-validator");
@@ -92,6 +94,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 module.exports = router;
+```
 
 ## Comparision between calling the methods based on gRPC and REST API
 For RESTful Apis, the clients makes a request to the server by using HTTP protocol. The server then matches the uri given from the client to see which function will be exectuted. The function then returns a response for the client also using the HTTP protocol.
