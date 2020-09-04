@@ -101,10 +101,10 @@ For RESTful Apis, the clients makes a request to the server by using HTTP protoc
 
 | Functions     | gRPC          | Rest  |
 | ------------- |:-------------:| -----:|
-| List All Books|               |axios.get("/books")|
-| Get One Book  |               |axios.get("/books/${id}")|
-| Add a Book    |               |axios.post("/books", {name: bookName,author,})|
-| Remove a Book |               |axios.delete(`/books/${id}`)|
+| List All Books| client.list({}, function(error, books)            |axios.get("/books")|
+| Get One Book  | client.get({ id: parseInt(id) }, function(error, book)          |axios.get("/books/${id}")|
+| Add a Book    | client.insert(book, function(error, empty)            |axios.post("/books", {name: bookName,author,})|
+| Remove a Book | client.delete({ id: parseInt(id) }, function(error, empty)              |axios.delete(`/books/${id}`)|
 
 ## What are the main differences between REST API and gRPC?
 
