@@ -7,22 +7,22 @@ class BookDetails extends React.Component {
   };
 
   render() {
-    const { name, author, _id } = this.props;
+    const { title, author, id } = this.props;
 
     return (
       <>
         <form
           className="d-flex justify-end"
-          onSubmit={() => this.deleteBook(_id)}
+          onSubmit={() => this.deleteBook(id)}
         >
           <button className="danger">Delete</button>
         </form>
-        <h2>{name}</h2>
+        <h2>{title}</h2>
         <p>
           <b>Author:</b> {author}
         </p>
         <p>
-          <b>BookID:</b> {_id}
+          <b>BookID:</b> {id}
         </p>
       </>
     );

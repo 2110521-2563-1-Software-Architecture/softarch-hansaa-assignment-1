@@ -1,5 +1,4 @@
 import React from "react";
-import Card from "react-bootstrap/Card";
 import axios from "axios";
 import BookDetails from "./BookDetails";
 
@@ -33,7 +32,7 @@ class BookList extends React.Component {
               >
                 <div class="d-flex align-center">
                   <b className="pr-large1" style={{ display: "inline-block" }}>
-                    {book.name}
+                    {book.title}
                   </b>
                   <div style={{ color: "#898989" }} class="pr-large2">
                     Author: {book.author}
@@ -52,12 +51,15 @@ class BookList extends React.Component {
           })}
         </div>
         <div style={{ flex: "50%" }}>
-          <div className="card" style={{ width: "100%", height: "100%" }}>
+          <div
+            className="card ml-large2"
+            style={{ width: "100%", height: "100%" }}
+          >
             {selectedBook ? (
               <BookDetails
-                name={selectedBook.name}
+                title={selectedBook.title}
                 author={selectedBook.author}
-                _id={selectedBook._id}
+                id={selectedBook.id}
               />
             ) : (
               <div

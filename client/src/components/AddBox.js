@@ -4,15 +4,17 @@ import { isEmpty } from "lodash";
 
 class AddBox extends React.Component {
   state = {
-    bookName: "",
+    bookTitle: "",
     author: "",
+    id: "",
   };
 
-  submit = (e) => {
-    const { bookName, author } = this.state;
+  submit = () => {
+    const { id, bookTitle, author } = this.state;
     axios
       .post("/books", {
-        name: bookName,
+        id,
+        title: bookTitle,
         author,
       })
       .then((res) => console.log(res))
@@ -20,16 +22,25 @@ class AddBox extends React.Component {
   };
 
   render() {
-    const { bookName, author } = this.state;
+    const { bookTitle, author, id } = this.state;
     return (
       <div className="card mt-large3">
         <form onSubmit={(e) => this.submit(e)}>
           <h2 class="pb-large1">Add New Book</h2>
           <div class="pb-large2">
+            <label class="pb-large1 d-block">ID</label>
+            <input
+              value={id}
+              onChange={(e) => this.setState({ id: e.target.value })}
+              placeholder="Book ID"
+              type="number"
+            />
+          </div>
+          <div class="pb-large2">
             <label class="pb-large1 d-block">Name</label>
             <input
-              value={bookName}
-              onChange={(e) => this.setState({ bookName: e.target.value })}
+              value={bookTitle}
+              onChange={(e) => this.setState({ bookTitle: e.target.value })}
               placeholder="Book Name"
             />
           </div>
@@ -42,7 +53,10 @@ class AddBox extends React.Component {
             />
           </div>
 
-          <button type="submit" disabled={isEmpty(bookName) || isEmpty(author)}>
+          <button
+            type="submit"
+            disabled={isEmpty(bookTitle) || isEmpty(author)}
+          >
             Add
           </button>
         </form>
