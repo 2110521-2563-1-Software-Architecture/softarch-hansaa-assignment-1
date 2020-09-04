@@ -39,7 +39,7 @@ router.get("/", async (req, res) => {
  *         description: Success
  */
 router.get("/:id", async (req, res) => {
-  Book.findById(req.params.id)
+  Book.findOne({ id: req.params.id })
     .then((book) => {
       res.status(200).json(book);
     })
@@ -54,7 +54,14 @@ router.get("/:id", async (req, res) => {
  *    post:
  *      description: Create a book
  *      parameters:
- *        - name: name
+ *        - name: id
+ *          in: body
+ *          description: ID of our book
+ *          required: true
+ *          schema:
+ *            type: integer
+ *            format: integer
+ *        - name: title
  *          in: body
  *          description: Name of our book
  *          required: true
@@ -74,10 +81,11 @@ router.get("/:id", async (req, res) => {
  */
 router.post(
   "/",
-  [body("name").notEmpty(), body("author").notEmpty()],
+  [body("id").notEmpty(), body("title").notEmpty(), body("author").notEmpty()],
   async (req, res) => {
     const book = new Book({
-      name: req.body.name,
+      id: req.body.id,
+      title: req.body.title,
       author: req.body.author,
     });
 
@@ -109,7 +117,7 @@ router.post(
  */
 router.delete("/:id", async (req, res) => {
   try {
-    await Book.findByIdAndDelete(req.params.id);
+    await Book.findOneAndDelete({ id: req.params.id });
     res.status(200).json(true);
   } catch (err) {
     res.status(400).json({ errors: err });

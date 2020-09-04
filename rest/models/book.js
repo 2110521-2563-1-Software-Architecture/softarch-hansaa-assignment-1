@@ -1,7 +1,12 @@
 const mongoose = require("mongoose");
 
 const bookSchema = new mongoose.Schema({
-  name: {
+  id: {
+    type: Number,
+    get: (v) => Math.round(v),
+    set: (v) => Math.round(v),
+  },
+  title: {
     type: String,
     required: true,
   },
@@ -20,18 +25,18 @@ module.exports = mongoose.model("Book", bookSchema);
  *      book:
  *        type: object
  *        required:
- *          - name
+ *          - id
+ *          - title
  *          - author
- *          - borrowed
  *        properties:
- *          name:
+ *          id:
+ *            type: integer
+ *          title:
  *            type: string
  *          author:
  *            type: string
- *          borrowed:
- *            type: boolean
  *        example:
- *           name: BookName
+ *           id: 0
+ *           title: BookTitle
  *           author: AuthorName
- *           borrowed: false
  */
