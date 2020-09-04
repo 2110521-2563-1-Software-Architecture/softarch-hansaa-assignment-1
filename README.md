@@ -129,8 +129,6 @@ module.exports = router;
 
 ## Comparision between calling the methods based on gRPC and REST API
 
-For RESTful APIs, the clients makes a request to the server by using HTTP protocol. The server then matches the uri given from the client to see which function will be exectuted. The function then returns a response for the client also using the HTTP protocol.
-
 | Functions      | gRPC                                                         | Rest                                                       |
 | -------------- | :----------------------------------------------------------- | :--------------------------------------------------------- |
 | List All Books | `client.list({}, function(error, books)`                     | `` axios.get(`${BASE_URL}/books`) ``                       |
