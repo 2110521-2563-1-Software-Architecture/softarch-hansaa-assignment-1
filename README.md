@@ -40,4 +40,4 @@ Based on the introduced interface, compare how to call the methods based on gRPC
 | Remove a Book |               |       |
 
 Draw a component diagram representing the book services with and without interfaces.
-![Screenshots of Swagger](https://github.com/2110521-2563-1-Software-Architecture/softarch-hansaa-assignment-1/blob/master/images/Component(4).png?raw=true)
+![component diagram of RestApi with interface](https://github.com/2110521-2563-1-Software-Architecture/softarch-hansaa-assignment-1/blob/master/images/Component (4).png?raw=true)
