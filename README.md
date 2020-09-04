@@ -29,6 +29,8 @@ async componentDidMount() {
 
 getBook = (id) => {
   const book = axios.get("/books/${id}");
+  this.setState({selectedBook: book});
+}
 
 submit = (e) => {
     const { bookName, author } = this.state;
