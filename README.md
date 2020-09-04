@@ -100,11 +100,11 @@ module.exports = router;
 For RESTful Apis, the clients makes a request to the server by using HTTP protocol. The server then matches the uri given from the client to see which function will be exectuted. The function then returns a response for the client also using the HTTP protocol.
 
 | Functions     | gRPC          | Rest  |
-| ------------- |:-------------:| -----:|
-| List All Books| client.list({}, function(error, books)            |axios.get("/books")|
-| Get One Book  | client.get({ id: parseInt(id) }, function(error, book)          |axios.get("/books/${id}")|
-| Add a Book    | client.insert(book, function(error, empty)            |axios.post("/books", {name: bookName,author,})|
-| Remove a Book | client.delete({ id: parseInt(id) }, function(error, empty)              |axios.delete(`/books/${id}`)|
+| ------------- |:-------------| :-----|
+| List All Books| client.list({}, function (error, books) {printResponse(error, books);});            | axios.get("/books")|
+| Get One Book  | client.get({ id: parseInt(id) }, function (error, book) {printResponse(error, book);});          | axios.get("/books/${id}")|
+| Add a Book    | client.insert(book, function (error, empty) {printResponse(error, empty);});            | axios.post("/books", {name: bookName,author,})|
+| Remove a Book |   client.delete({ id: parseInt(id) }, function (error, empty) {printResponse(error, empty);});              | axios.delete(`/books/${id}`)|
 
 ## What are the main differences between REST API and gRPC?
 
@@ -113,11 +113,11 @@ For RESTful Apis, the clients makes a request to the server by using HTTP protoc
 ## What is the benefits of introduce interface in front of the gRPC and REST API of the book services?
 Based on the introduced interface, compare how to call the methods based on gRPC and REST API side-by-side, e.g. in a table format as shown below.
 | Functions     | gRPC          | Rest  |
-| ------------- |:-------------:| -----:|
-| List All Books|listBooks()|       |
-| Get One Book  |insertBook(id, title, author)|       |
-| Add a Book    |getBook(id)|       |
-| Remove a Book |deleteBook(id)|       |
+| ------------- |:-------------| :-----|
+| List All Books|node client.js list|node client.js list       |
+| Get One Book  |node client.js insert 'id' 'title 'author'|node client.js insert 'id' 'title 'author'       |
+| Add a Book    |node client.js getBook 'id'|node client.js getBook 'id'       |
+| Remove a Book |node client.js deleteBook 'id'|node client.js deleteBook 'id'       |
 
 ## Draw a component diagram representing the book services with and without interfaces.
 
