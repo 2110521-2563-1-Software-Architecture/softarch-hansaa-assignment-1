@@ -37,11 +37,11 @@ class AddBox extends React.Component {
             />
           </div>
           <div class="pb-large2">
-            <label class="pb-large1 d-block">Name</label>
+            <label class="pb-large1 d-block">Title</label>
             <input
               value={bookTitle}
               onChange={(e) => this.setState({ bookTitle: e.target.value })}
-              placeholder="Book Name"
+              placeholder="Book Title"
             />
           </div>
           <div class="pb-large2">
