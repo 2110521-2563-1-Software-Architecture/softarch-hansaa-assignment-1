@@ -26,11 +26,11 @@ For RESTful Apis, the clients makes a request to the server by using HTTP protoc
 | Add a Book    |               |       |
 | Remove a Book |               |       |
 
-What are the main differences between REST API and gRPC?
+## What are the main differences between REST API and gRPC?
 
 REST API จะส่ง Request ด้วย HTTP Protocol เพื่อให้ server ทำงาน แล้วส่ง Response กลับมา แต่ gRPC จะเรียกใช้ procedure จาก server ที่ทำงานอยู่โดยตรง
 
-What is the benefits of introduce interface in front of the gRPC and REST API of the book services?
+## What is the benefits of introduce interface in front of the gRPC and REST API of the book services?
 Based on the introduced interface, compare how to call the methods based on gRPC and REST API side-by-side, e.g. in a table format as shown below.
 | Functions     | gRPC          | Rest  |
 | ------------- |:-------------:| -----:|
@@ -39,6 +39,6 @@ Based on the introduced interface, compare how to call the methods based on gRPC
 | Add a Book    |               |       |
 | Remove a Book |               |       |
 
-Draw a component diagram representing the book services with and without interfaces.
+## Draw a component diagram representing the book services with and without interfaces.
 
 ![component diagram of RestApi with interface](https://github.com/2110521-2563-1-Software-Architecture/softarch-hansaa-assignment-1/blob/master/images/Component%20(4).png)
