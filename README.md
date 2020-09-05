@@ -162,4 +162,10 @@ Introducing an interface allows for a service to be called without the need to k
 
 ## Component diagram representing the book services with and without interfaces
 
-![component diagram of RestApi with interface](<https://github.com/2110521-2563-1-Software-Architecture/softarch-hansaa-assignment-1/blob/master/images/Component%20(4).png>)
+![component diagram of GRPC](images/GRPC.png)
+![component diagram of RestApi with interface](images/RestApiw:interface.png)
+![component diagram of RestApi without interface](images/RestApiwout:interface.png)
+
+
+
+
