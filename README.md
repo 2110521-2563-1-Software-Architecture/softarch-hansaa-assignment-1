@@ -28,54 +28,54 @@ This contains the source code for REST api, client for the REST api, gRPC, and g
 ##### List All Books
 
 ```
-function listAllBooks(){
-    const listAllBooksAPI = async () => {
-        await axios.get(`${BASE_URL}/books`).then((res) => console.log(res.data));
-    };
-    listAllBooksAPI();
+const listAllBooks = () => {
+  const listAllBooksAPI = async () => {
+    await axios.get(`${BASE_URL}/books`).then((res) => console.log(res.data));
+  };
+  listAllBooksAPI();
 };
 ```
 
 ##### Get a Book by ID
 
 ```
-function getBookById(id){
-    const getBookByIdAPI = async (id) => {
-        await axios
-          .get(`${BASE_URL}/books/${id}`)
-          .then((res) => console.log(res.data));
-    };
-    getBookByIdAPI(id);
+const getBookById = (id) => {
+  const getBookByIdAPI = async (id) => {
+    await axios
+      .get(`${BASE_URL}/books/${id}`)
+      .then((res) => console.log(res.data));
+  };
+  getBookByIdAPI(id);
 };
 ```
 
 ##### Insert a Book
 
 ```
-function insertBook(id,title,author){
-    const insertBookAPI = async (id, title, author) => {
-        await axios
-          .post(`${BASE_URL}/books`, {
-            id,
-            title,
-            author,
-          })
-          .then((res) => console.log(res.data));
-    };
-    insertBookAPI(id, title, author);
+const insertBook = (id, title, author) => {
+  const insertBookAPI = async (id, title, author) => {
+    await axios
+      .post(`${BASE_URL}/books`, {
+        id,
+        title,
+        author,
+      })
+      .then((res) => console.log(res.data));
+  };
+  insertBookAPI(id, title, author);
 };
 ```
 
 ##### Delete a Book
 
 ```
-function deleteBookById (id) {
-    const deleteBookByIdAPI = async (id) => {
-      await axios
-        .delete(`${BASE_URL}/books/${id}`)
-        .then((res) => console.log(res.data));
-    };
-    deleteBookByIdAPI(id);
+const deleteBookById = (id) => {
+  const deleteBookByIdAPI = async (id) => {
+    await axios
+      .delete(`${BASE_URL}/books/${id}`)
+      .then((res) => console.log(res.data));
+  };
+  deleteBookByIdAPI(id);
 };
 ```
 
