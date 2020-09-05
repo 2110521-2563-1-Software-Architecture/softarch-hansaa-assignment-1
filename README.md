@@ -28,56 +28,55 @@ This contains the source code for REST api, client for the REST api, gRPC, and g
 ##### List All Books
 
 ```
-const listAllBooks = () => {
-  const listAllBooksAPI = async () => {
-    await axios.get(`${BASE_URL}/books`).then((res) => console.log(res.data));
-  };
-  listAllBooksAPI();
+function listAllBooks(){
+    const listAllBooksAPI = async () => {
+        await axios.get(`${BASE_URL}/books`).then((res) => console.log(res.data));
+    };
+    listAllBooksAPI();
 };
 ```
 
 ##### Get a Book by ID
 
 ```
-const getBookById = () => {
-  const getBookByIdAPI = async (id) => {
-    await axios
-      .get(`${BASE_URL}/books/${id}`)
-      .then((res) => console.log(res.data));
-  };
-  const id = args[1];
-  getBookByIdAPI(id);
+function getBookById(id){
+    const getBookByIdAPI = async (id) => {
+        await axios
+          .get(`${BASE_URL}/books/${id}`)
+          .then((res) => console.log(res.data));
+    };
+    getBookByIdAPI(id);
 };
 ```
 
 ##### Insert a Book
 
 ```
-const insertBookAPI = async (id, title, author) => {
-  await axios
-    .post(`${BASE_URL}/books`, {
-      id,
-      title,
-      author,
-    })
-    .then((res) => console.log(res.data));
+function insertBook(id,title,author){
+    const insertBookAPI = async (id, title, author) => {
+        await axios
+          .post(`${BASE_URL}/books`, {
+            id,
+            title,
+            author,
+          })
+          .then((res) => console.log(res.data));
+    };
+    insertBookAPI(id, title, author);
 };
-const id = args[1];
-const title = args[2];
-const author = args[3];
-insertBookAPI(id, title, author);
 ```
 
 ##### Delete a Book
 
 ```
-const deleteBookByIdAPI = async (id) => {
-  await axios
-    .delete(`${BASE_URL}/books/${id}`)
-    .then((res) => console.log(res.data));
+function deleteBookById (id) {
+    const deleteBookByIdAPI = async (id) => {
+      await axios
+        .delete(`${BASE_URL}/books/${id}`)
+        .then((res) => console.log(res.data));
+    };
+    deleteBookByIdAPI(id);
 };
-const id = args[1];
-deleteBookByIdAPI(id);
 ```
 
 #### Server
@@ -145,10 +144,10 @@ Overall, the efficiency of gRPC is higher than that of REST due to several diffe
 Based on the introduced interface, compare how to call the methods based on gRPC and REST API side-by-side, e.g. in a table format as shown below.
 | Functions | gRPC | Rest |
 | ------------- |:-------------| :-----|
-| List All Books|`node client.js list`|`node -e 'require("./client").listAllBooks()'`|
-| Get One Book |`node client.js get [id]`|`node -e 'require("./client").getBookById()' [id]`|
-| Add a Book |`node client.js insert [id] [title] [author]`|`node -e 'require("./client").insertBook()' [id] [title] [author]`|
-| Remove a Book |`node client.js delete [id]` |`node -e 'require("./client").deleteBookById()' [id]`|
+| List All Books|`node client.js list`|`node client.js list`|
+| Get One Book |`node client.js get [id]`|`node client.js get [id]`|
+| Add a Book |`node client.js insert [id] [title] [author]`|`node client.js insert [id] [title] [author]`|
+| Remove a Book |`node client.js delete [id]` |`node client.js delete [id]`|
 
 ## Draw a component diagram representing the book services with and without interfaces.
 
