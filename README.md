@@ -147,7 +147,8 @@ module.exports = router;
 
 Overall, the efficiency of gRPC is higher than that of REST due to several differences in their feature implementations such as protocol (HTTP2 vs HTTP1.1), payload(Protobuf vs JSON), API contract (Strict vs Loose)etc. However, for specific cases in which browser support is mandatory or only small payloads are required to be sent through multiple, simultaneous client-server calls, REST outperforms gRPC.
 
-## What is the benefits of introduce interface in front of the gRPC and REST API of the book services?
+## ฺฺBenefits of introduce interface in front of the gRPC and REST API of the book services
+Introducing an interface allows for a service to be called without the need to know the specifics of the function that is connected to it. Interface also allows a service to be called via its original method name even when there is a change in server.
 
 ## Comparision between calling the methods based on gRPC and REST API based on the introduced interface
 
