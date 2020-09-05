@@ -158,6 +158,7 @@ Introducing an interface allows for a service to be called without the need to k
 | Get One Book |`node client.js get [id]`|`node client.js get [id]`|
 | Add a Book |`node client.js insert [id] [title] [author]`|`node client.js insert [id] [title] [author]`|
 | Remove a Book |`node client.js delete [id]` |`node client.js delete [id]`|
+|Watch| `node client.js watch`| - |
 
 ## Component diagram representing the book services with and without interfaces
 
