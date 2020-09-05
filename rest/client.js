@@ -6,8 +6,8 @@ const BASE_URL = "http://localhost:5000/api";
 function listAllBooks(){
     const listAllBooksAPI = async () => {
         await axios.get(`${BASE_URL}/books`).then((res) => console.log(res.data));
-      };
-      listAllBooksAPI();
+    };
+    listAllBooksAPI();
 };
 
 function getBookById(id){
@@ -15,8 +15,8 @@ function getBookById(id){
         await axios
           .get(`${BASE_URL}/books/${id}`)
           .then((res) => console.log(res.data));
-      };
-      getBookByIdAPI(id);
+    };
+    getBookByIdAPI(id);
 };
 
 function insertBook(id,title,author){
@@ -28,9 +28,9 @@ function insertBook(id,title,author){
             author,
           })
           .then((res) => console.log(res.data));
-      };
-      insertBookAPI(id, title, author);
-}
+    };
+    insertBookAPI(id, title, author);
+};
 
 function deleteBookById (id) {
     const deleteBookByIdAPI = async (id) => {
@@ -39,7 +39,7 @@ function deleteBookById (id) {
         .then((res) => console.log(res.data));
     };
     deleteBookByIdAPI(id);
-  };
+};
 
 var processName = process.argv.shift();
 var scriptName = process.argv.shift();
