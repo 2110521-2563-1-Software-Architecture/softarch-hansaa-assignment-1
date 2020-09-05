@@ -36,6 +36,7 @@ const insertBook = () => {
   const author = args[3];
   insertBookAPI(id, title, author);
 };
+
 const deleteBookById = () => {
   const deleteBookByIdAPI = async (id) => {
     await axios

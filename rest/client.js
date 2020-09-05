@@ -3,42 +3,43 @@ const axios = require("axios");
 const BASE_URL = "http://localhost:5000/api";
 
 
-function listAllBooks(){
-    const listAllBooksAPI = async () => {
-        await axios.get(`${BASE_URL}/books`).then((res) => console.log(res.data));
-    };
-    listAllBooksAPI();
+const listAllBooks = () => {
+  const listAllBooksAPI = async () => {
+    await axios.get(`${BASE_URL}/books`).then((res) => console.log(res.data));
+  };
+  listAllBooksAPI();
 };
 
-function getBookById(id){
-    const getBookByIdAPI = async (id) => {
-        await axios
-          .get(`${BASE_URL}/books/${id}`)
-          .then((res) => console.log(res.data));
-    };
-    getBookByIdAPI(id);
+const getBookById = (id) => {
+  const getBookByIdAPI = async (id) => {
+    await axios
+      .get(`${BASE_URL}/books/${id}`)
+      .then((res) => console.log(res.data));
+  };
+  getBookByIdAPI(id);
 };
 
-function insertBook(id,title,author){
-    const insertBookAPI = async (id, title, author) => {
-        await axios
-          .post(`${BASE_URL}/books`, {
-            id,
-            title,
-            author,
-          })
-          .then((res) => console.log(res.data));
-    };
-    insertBookAPI(id, title, author);
+
+const insertBook = (id, title, author) => {
+  const insertBookAPI = async (id, title, author) => {
+    await axios
+      .post(`${BASE_URL}/books`, {
+        id,
+        title,
+        author,
+      })
+      .then((res) => console.log(res.data));
+  };
+  insertBookAPI(id, title, author);
 };
 
-function deleteBookById (id) {
-    const deleteBookByIdAPI = async (id) => {
-      await axios
-        .delete(`${BASE_URL}/books/${id}`)
-        .then((res) => console.log(res.data));
-    };
-    deleteBookByIdAPI(id);
+const deleteBookById = (id) => {
+  const deleteBookByIdAPI = async (id) => {
+    await axios
+      .delete(`${BASE_URL}/books/${id}`)
+      .then((res) => console.log(res.data));
+  };
+  deleteBookByIdAPI(id);
 };
 
 var processName = process.argv.shift();
