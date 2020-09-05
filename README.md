@@ -131,10 +131,10 @@ module.exports = router;
 
 | Functions      | gRPC                                                         | Rest                                                       |
 | -------------- | :----------------------------------------------------------- | :--------------------------------------------------------- |
-| List All Books | `client.list({}, function(error, books)`                     | `` axios.get(`${BASE_URL}/books`) ``                       |
-| Get One Book   | `client.get({ id: parseInt(id) }, function(error, book)`     | `` axios.get(`${BASE_URL}/books/${id}`) ``                 |
-| Add a Book     | `client.insert(book, function(error, empty)`                 | `` axios.post(`${BASE_URL}/books`, {id, title, author}) `` |
-| Remove a Book  | `client.delete({ id: parseInt(id) }, function(error, empty)` | `` axios.delete(`${BASE_URL}/books/${id}`) ``              |
+| List All Books | `client.list({}, function(error, books) {printResponse(error, books);});`| `` axios.get(`${BASE_URL}/books`) ``                       |
+| Get One Book   | `client.get({ id: parseInt(id) }, function(error, book) {printResponse(error, book);});`| `` axios.get(`${BASE_URL}/books/${id}`) ``                 |
+| Add a Book     | `client.insert(book, function(error, empty) {printResponse(error, empty);});`| `` axios.post(`${BASE_URL}/books`, {id, title, author}) `` |
+| Remove a Book  | `client.delete({ id: parseInt(id) }, function(error, empty) {printResponse(error, empty);});` | `` axios.delete(`${BASE_URL}/books/${id}`) ``              |
 
 ## What are the main differences between REST API and gRPC?
 
