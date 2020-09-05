@@ -143,7 +143,7 @@ module.exports = router;
 | Add a Book     | `client.insert(book, function(error, empty) {printResponse(error, empty);});`| `` axios.post(`${BASE_URL}/books`, {id,title,author,}).then((res) => console.log(res.data));}; `` |
 | Remove a Book  | `client.delete({ id: parseInt(id) }, function(error, empty) {printResponse(error, empty);});` | `` axios.delete(`${BASE_URL}/books/${id}`).then((res) => console.log(res.data));}; ``|
 
-## The main differences between REST API and gRPC
+## Main differences between REST API and gRPC
 
 Overall, the efficiency of gRPC is higher than that of REST due to several differences in their feature implementations such as protocol (HTTP2 vs HTTP1.1), payload(Protobuf vs JSON), API contract (Strict vs Loose)etc. However, for specific cases in which browser support is mandatory or only small payloads are required to be sent through multiple, simultaneous client-server calls, REST outperforms gRPC.
 
