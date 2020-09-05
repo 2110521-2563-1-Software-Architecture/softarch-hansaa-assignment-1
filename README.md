@@ -96,6 +96,16 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/:id", async (req, res) => {
+  Book.findOne({ id: req.params.id })
+    .then((book) => {
+      res.status(200).json(book);
+    })
+    .catch((err) => {
+      res.status(400).json({ errors: err });
+    });
+});
+
 router.post(
   "/",
   [body("name").notEmpty(), body("author").notEmpty()],
