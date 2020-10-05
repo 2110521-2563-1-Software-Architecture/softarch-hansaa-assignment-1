@@ -1,7 +1,6 @@
 const axios = require("axios");
 
-const BASE_URL = "http://localhost:5000/api";
-
+const BASE_URL = "http://localhost:4000/api";
 
 const listAllBooks = () => {
   const listAllBooksAPI = async () => {
@@ -18,7 +17,6 @@ const getBookById = (id) => {
   };
   getBookByIdAPI(id);
 };
-
 
 const insertBook = (id, title, author) => {
   const insertBookAPI = async (id, title, author) => {
@@ -47,6 +45,7 @@ var scriptName = process.argv.shift();
 var command = process.argv.shift();
 
 if (command == "list") listAllBooks();
-else if (command == "insert") insertBook(process.argv[0], process.argv[1], process.argv[2]);
+else if (command == "insert")
+  insertBook(process.argv[0], process.argv[1], process.argv[2]);
 else if (command == "get") getBookById(process.argv[0]);
 else if (command == "delete") deleteBookById(process.argv[0]);
